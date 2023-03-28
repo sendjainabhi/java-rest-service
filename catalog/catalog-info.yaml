@@ -7,6 +7,7 @@ metadata:
 spec:
   type: service
   lifecycle: experimental
-  owner: default-team
+  owner: team-awesome
+  system: tanzu-gtt
   providesApis:
     - customer-profile

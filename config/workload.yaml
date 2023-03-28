@@ -2,12 +2,14 @@ apiVersion: carto.run/v1alpha1
 kind: Workload
 metadata:
   name: customer-profile
+  namespace: mae
   labels:
     apps.tanzu.vmware.com/workload-type: web
     app.kubernetes.io/part-of: customer-profile
     apps.tanzu.vmware.com/has-tests: "true"
     apis.apps.tanzu.vmware.com/register-api: "true"
     apps.tanzu.vmware.com/auto-configure-actuators: "true"
+    no-sonar: "true"
 spec:
   build:
     env:
@@ -17,20 +19,25 @@ spec:
     - name: annotations
       value:
         autoscaling.knative.dev/minScale: "1"
+    - name: scanning_source_policy
+      value: lax-scan-policy
+    - name: scanning_image_policy
+      value: lax-scan-policy
     - name: testing_pipeline_matching_labels
       value:
-        apps.tanzu.vmware.com/pipeline: test-java
+        apps.tanzu.vmware.com/pipeline: test
+        apps.tanzu.vmware.com/language: java
     - name: api_descriptor
       value:
         type: openapi
         location: 
           path: "/api-docs"
-        owner: customer-relations-department
-        system: profile-management
+        owner: team-awesome
+        system: tanzu-gtt
         description: Manage customer profiles
   source:
     git:
-      url: https://github.com/Mpluya/prep-java-rest-service
+      url: ssh://git@github.com/Mpluya/prep-java-rest-service
       ref:
         branch: main
   serviceClaims:
@@ -38,4 +45,4 @@ spec:
       ref:
         apiVersion: services.apps.tanzu.vmware.com/v1alpha1
         kind: ResourceClaim
-        name: customer-database-claim
+        name: postgres-mae
