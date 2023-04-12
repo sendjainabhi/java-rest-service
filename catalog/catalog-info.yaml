@@ -11,4 +11,4 @@ spec:
   owner: team-awesome
   system: tanzu-gtt
   providesApis:
-    - customer-profile
+    - customer-profile-run
