@@ -123,7 +123,7 @@ public class CustomerProfileController {
     @ApiResponses({
             @ApiResponse(
                     responseCode = "200",
-                    description = "Customer profiles retrieved successfully, LOOK AT ME IM DIFFERENT!"
+                    description = "Customer profiles retrieved successfully, YEET!"
             )
     })
     @Transactional(readOnly = true)
