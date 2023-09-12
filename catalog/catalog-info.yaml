@@ -7,7 +7,7 @@ metadata:
     "backstage.io/kubernetes-label-selector": "app.kubernetes.io/part-of=customer-profile"
 spec:
   type: service
-  lifecycle: experimental
+  lifecycle: production
   owner: team-awesome
   system: tanzu-gtt
   providesApis:
