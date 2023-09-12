@@ -12,3 +12,4 @@ spec:
   system: tanzu-gtt
   providesApis:
     - customer-profile-2a72b9a8
+    - customer-profile-107d9d22
