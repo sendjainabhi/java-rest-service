@@ -36,7 +36,7 @@ spec:
         system: tanzu-gtt
         description: Manage customer profiles
     - name: gitops_ssh_secret
-      value: tenant-gitops-ssh
+      value: git-auth
   source:
     git:
       url: ssh://git@github.com/Mpluya/prep-java-rest-service
