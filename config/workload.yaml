@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/part-of: customer-profile
     apis.apps.tanzu.vmware.com/register-api: "true"
     apps.tanzu.vmware.com/auto-configure-actuators: "true"
-    no-sonar: "true"
+
 spec:
   build:
     env:
@@ -17,27 +17,18 @@ spec:
     - name: annotations
       value:
         autoscaling.knative.dev/minScale: "1"
-    - name: scanning_source_policy
-      value: lax-scan-policy
-    - name: scanning_image_policy
-      value: lax-scan-policy
-    - name: testing_pipeline_matching_labels
-      value:
-        apps.tanzu.vmware.com/pipeline: test
-        apps.tanzu.vmware.com/language: java
     - name: api_descriptor
       value:
         type: openapi
-        location: 
+        location:
           path: "/api-docs"
         owner: team-awesome
         system: tanzu-gtt
         description: Manage customer profiles
-    - name: gitops_ssh_secret
-      value: git-auth
+
   source:
     git:
-      url: ssh://git@github.com/Mpluya/prep-java-rest-service
+      url: https://github.com/sendjainabhi/java-rest-service.git
       ref:
         branch: main
   serviceClaims:
